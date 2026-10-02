@@ -1,0 +1,130 @@
+{
+  "scope": "Synthetic localhost reproduction on the original n8n 2.20.0 workflow",
+  "caller_and_intermediate_state": {
+    "REPRO-REGISTER": {
+      "first": {
+        "http": 200,
+        "raw_body": ""
+      },
+      "stored": {
+        "ticket_id": "REPRO-REGISTER",
+        "status": "RECEIVED",
+        "ai_called": 0,
+        "category": null,
+        "confidence": null,
+        "route": null,
+        "reason": null,
+        "record_id": null,
+        "attempts": 0
+      },
+      "resend": {
+        "http": 200,
+        "raw_body": ""
+      }
+    },
+    "REPRO-TRIAGE": {
+      "first": {
+        "http": 200,
+        "raw_body": ""
+      },
+      "stored": {
+        "ticket_id": "REPRO-TRIAGE",
+        "status": "AI_CLASSIFIED",
+        "ai_called": 1,
+        "category": "order_status",
+        "confidence": 0.95,
+        "route": "AUTO",
+        "reason": "AUTO_ALLOWED",
+        "record_id": null,
+        "attempts": 0
+      },
+      "resend": {
+        "http": 200,
+        "raw_body": "{\"ticket_id\":\"REPRO-TRIAGE\",\"disposition\":\"duplicate\"}"
+      }
+    },
+    "REPRO-NORMALIZE": {
+      "first": {
+        "http": 200,
+        "raw_body": ""
+      },
+      "stored": {
+        "ticket_id": "REPRO-NORMALIZE",
+        "status": "RECEIVED",
+        "ai_called": 0,
+        "category": null,
+        "confidence": null,
+        "route": null,
+        "reason": null,
+        "record_id": null,
+        "attempts": 0
+      },
+      "resend": {
+        "http": 200,
+        "raw_body": ""
+      }
+    },
+    "RECEIVED": {
+      "resend": {
+        "http": 200,
+        "raw_body": "{\"ticket_id\":\"REPRO-CRASH-RECEIVED\",\"disposition\":\"duplicate\"}"
+      },
+      "stored": {
+        "ticket_id": "REPRO-CRASH-RECEIVED",
+        "status": "RECEIVED",
+        "ai_called": 0,
+        "category": null,
+        "confidence": null,
+        "route": null,
+        "reason": null,
+        "record_id": null,
+        "attempts": 0
+      }
+    },
+    "AI_CLASSIFIED": {
+      "resend": {
+        "http": 200,
+        "raw_body": "{\"ticket_id\":\"REPRO-CRASH-AI_CLASSIFIED\",\"disposition\":\"duplicate\"}"
+      },
+      "stored": {
+        "ticket_id": "REPRO-CRASH-AI_CLASSIFIED",
+        "status": "AI_CLASSIFIED",
+        "ai_called": 1,
+        "category": "order_status",
+        "confidence": 0.95,
+        "route": "AUTO",
+        "reason": "AUTO_ALLOWED",
+        "record_id": null,
+        "attempts": 0
+      }
+    }
+  },
+  "attempt_mixing": {
+    "schedule": [
+      "old triage",
+      "old write unresolved",
+      "new registration",
+      "new triage",
+      "old delayed write",
+      "new write"
+    ],
+    "ticket": {
+      "ticket_id": "MIX",
+      "status": "AUTO_ROUTED",
+      "ai_called": 1,
+      "category": "technical",
+      "confidence": 0.9,
+      "route": "AUTO",
+      "reason": "AUTO_ALLOWED",
+      "record_id": "CASE-MIX",
+      "attempts": 1
+    },
+    "crm": [
+      {
+        "ticket_id": "MIX",
+        "case_id": "CASE-MIX",
+        "draft_reply": "OLD DRAFT"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+[project]
+name = "support-triage-demo"
+version = "0.1.0"
+requires-python = ">=3.12"
+description = "Local fake business system for an n8n support triage portfolio slice"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

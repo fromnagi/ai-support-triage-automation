@@ -1,0 +1,9 @@
+node_modules/
+.n8n/
+.local/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+*.db
+*.db-*

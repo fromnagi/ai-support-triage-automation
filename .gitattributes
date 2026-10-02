@@ -1,0 +1,2 @@
+workflows/*.json text eol=lf
+docs/demo/*.json text eol=lf

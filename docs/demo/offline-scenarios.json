@@ -1,0 +1,42 @@
+{
+  "scope": "Synthetic offline Store and actual workflow policy code; n8n execution is reported separately",
+  "scenarios": [
+    {
+      "scenario": "safe_order",
+      "ticket_id": "DEMO-AUTO",
+      "route": "AUTO",
+      "reason": "AUTO_ALLOWED",
+      "status": "AUTO_ROUTED",
+      "record_id": "CASE-DEMO-AUTO"
+    },
+    {
+      "scenario": "forced_review",
+      "ticket_id": "DEMO-REFUND",
+      "route": "REVIEW",
+      "reason": "HIGH_RISK_CATEGORY",
+      "status": "HUMAN_REVIEW",
+      "record_id": "REVIEW-DEMO-REFUND"
+    },
+    {
+      "scenario": "ai_failure",
+      "ticket_id": "DEMO-AI-FAIL",
+      "route": "REVIEW",
+      "reason": "AI_INVALID_OUTPUT",
+      "status": "HUMAN_REVIEW",
+      "record_id": "REVIEW-DEMO-AI-FAIL"
+    },
+    {
+      "scenario": "duplicate",
+      "ticket_id": "DEMO-AUTO",
+      "disposition": "duplicate",
+      "crm_count_for_ticket": 1
+    },
+    {
+      "scenario": "write_failure_retry",
+      "ticket_id": "DEMO-WRITE-FAIL",
+      "first_status": "WRITE_FAILED",
+      "final_status": "AUTO_ROUTED",
+      "crm_count_for_ticket": 1
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "scope": "Actual localhost n8n 2.20.12 webhook executions with synthetic data and fake LLM/business APIs",
+  "root_and_fresh_checkout": "Both completed basic, extended, concurrency and regression runs; matching regression results",
+  "basic_ticket_states": [
+    {
+      "ticket_id": "LIVE-BASIC-AUTO",
+      "status": "AUTO_ROUTED",
+      "category": "order_status",
+      "confidence": 0.95,
+      "route": "AUTO",
+      "reason": "AUTO_ALLOWED",
+      "record_id": "CASE-LIVE-BASIC-AUTO",
+      "attempt_id": 0
+    },
+    {
+      "ticket_id": "LIVE-BASIC-FAIL",
+      "status": "HUMAN_REVIEW",
+      "category": null,
+      "confidence": null,
+      "route": "REVIEW",
+      "reason": "AI_INVALID_OUTPUT",
+      "record_id": "REVIEW-LIVE-BASIC-FAIL",
+      "attempt_id": 0
+    },
+    {
+      "ticket_id": "LIVE-BASIC-REVIEW",
+      "status": "HUMAN_REVIEW",
+      "category": "refund",
+      "confidence": 0.95,
+      "route": "REVIEW",
+      "reason": "HIGH_RISK_CATEGORY",
+      "record_id": "REVIEW-LIVE-BASIC-REVIEW",
+      "attempt_id": 0
+    },
+    {
+      "ticket_id": "LIVE-CONCURRENT",
+      "status": "AUTO_ROUTED",
+      "category": "order_status",
+      "confidence": 0.95,
+      "route": "AUTO",
+      "reason": "AUTO_ALLOWED",
+      "record_id": "CASE-LIVE-CONCURRENT",
+      "attempt_id": 0
+    },
+    {
+      "ticket_id": "LIVE-EXT-account",
+      "status": "HUMAN_REVIEW",
+      "category": "account_access",
+      "confidence": 0.95,
+      "route": "REVIEW",
+      "reason": "HIGH_RISK_CATEGORY",
+      "record_id": "REVIEW-LIVE-EXT-account",
+      "attempt_id": 0
+    }
+  ],
+  "selected_regressions": {
+    "REG400": {
+      "http": 503,
+      "response": {
+        "status": "PROCESSING_UNRESOLVED",
+        "reason": "WORKFLOW_ERROR",
+        "needs_attention": true
+      },
+      "state": null
+    },
+    "REG204": {
+      "http": 503,
+      "response": {
+        "status": "PROCESSING_UNRESOLVED",
+        "reason": "WORKFLOW_ERROR",
+        "needs_attention": true
+      },
+      "state": null
+    },
+    "REGSHAPE": {
+      "http": 503,
+      "response": {
+        "status": "PROCESSING_UNRESOLVED",
+        "reason": "WORKFLOW_ERROR",
+        "needs_attention": true
+      },
+      "state": {
+        "ticket_id": "REGRESSION-REGSHAPE",
+        "status": "RECEIVED",
+        "ai_called": 0,
+        "category": null,
+        "confidence": null,
+        "route": null,
+        "reason": null,
+        "record_id": null,
+        "attempts": 0,
+        "attempt_id": 0
+      }
+    },
+    "TRISHAPE": {
+      "http": 503,
+      "response": {
+        "status": "PROCESSING_UNRESOLVED",
+        "reason": "WORKFLOW_ERROR",
+        "needs_attention": true
+      },
+      "state": {
+        "ticket_id": "REGRESSION-TRISHAPE",
+        "status": "AI_CLASSIFIED",
+        "ai_called": 1,
+        "category": "order_status",
+        "confidence": 0.95,
+        "route": "AUTO",
+        "reason": "AUTO_ALLOWED",
+        "record_id": null,
+        "attempts": 0,
+        "attempt_id": 0
+      }
+    },
+    "UNRESOLVED": {
+      "http": 503,
+      "response": {
+        "ticket_id": "REGRESSION-UNRESOLVED",
+        "attempt_id": 0,
+        "status": "WRITE_UNRESOLVED",
+        "route": "AUTO",
+        "reason": "STATE_CONFIRMATION_FAILED"
+      },
+      "resend_http": 202,
+      "resend": {
+        "ticket_id": "REGRESSION-UNRESOLVED",
+        "disposition": "duplicate",
+        "status": "AI_CLASSIFIED",
+        "attempt_id": 0,
+        "record_id": null,
+        "needs_attention": true
+      }
+    },
+    "RECEIVED": {
+      "http": 202,
+      "response": {
+        "ticket_id": "REGRESSION-RECEIVED",
+        "disposition": "duplicate",
+        "status": "RECEIVED",
+        "attempt_id": 0,
+        "record_id": null,
+        "needs_attention": true
+      }
+    },
+    "AI_CLASSIFIED": {
+      "http": 202,
+      "response": {
+        "ticket_id": "REGRESSION-AI_CLASSIFIED",
+        "disposition": "duplicate",
+        "status": "AI_CLASSIFIED",
+        "attempt_id": 0,
+        "record_id": null,
+        "needs_attention": true
+      }
+    },
+    "DELAYED_ATTEMPT": {
+      "old_response": {
+        "ticket_id": "LIVE-ATTEMPT",
+        "attempt_id": 0,
+        "status": "WRITE_FAILED",
+        "route": "AUTO",
+        "reason": "BUSINESS_WRITE_FAILED"
+      },
+      "new_response": {
+        "ticket_id": "LIVE-ATTEMPT",
+        "attempt_id": 1,
+        "status": "AUTO_ROUTED",
+        "route": "AUTO",
+        "reason": "AUTO_ALLOWED",
+        "category": "technical",
+        "confidence": 0.9,
+        "record_id": "CASE-LIVE-ATTEMPT"
+      },
+      "delayed_write": {
+        "http": 400,
+        "error": "INVALID_STATE"
+      },
+      "ticket": {
+        "ticket_id": "LIVE-ATTEMPT",
+        "status": "AUTO_ROUTED",
+        "ai_called": 1,
+        "category": "technical",
+        "confidence": 0.9,
+        "route": "AUTO",
+        "reason": "AUTO_ALLOWED",
+        "record_id": "CASE-LIVE-ATTEMPT",
+        "attempts": 1,
+        "attempt_id": 1
+      },
+      "record": {
+        "ticket_id": "LIVE-ATTEMPT",
+        "case_id": "CASE-LIVE-ATTEMPT",
+        "draft_reply": "NEW DRAFT",
+        "attempt_id": 1
+      }
+    },
+    "NETREG": {
+      "http": 503,
+      "response": {
+        "status": "PROCESSING_UNRESOLVED",
+        "reason": "WORKFLOW_ERROR",
+        "needs_attention": true
+      },
+      "state": null
+    },
+    "NETTRI": {
+      "http": 503,
+      "response": {
+        "status": "PROCESSING_UNRESOLVED",
+        "reason": "WORKFLOW_ERROR",
+        "needs_attention": true
+      },
+      "state": {
+        "ticket_id": "REGRESSION-NETTRI",
+        "status": "RECEIVED",
+        "ai_called": 0,
+        "category": null,
+        "confidence": null,
+        "route": null,
+        "reason": null,
+        "record_id": null,
+        "attempts": 0,
+        "attempt_id": 0
+      }
+    },
+    "NETWRITE": {
+      "http": 502,
+      "response": {
+        "ticket_id": "REGRESSION-NETWRITE",
+        "attempt_id": 0,
+        "status": "WRITE_FAILED",
+        "route": "AUTO",
+        "reason": "BUSINESS_WRITE_FAILED"
+      },
+      "state": {
+        "ticket_id": "REGRESSION-NETWRITE",
+        "status": "WRITE_FAILED",
+        "ai_called": 1,
+        "category": "order_status",
+        "confidence": 0.95,
+        "route": "AUTO",
+        "reason": "BUSINESS_WRITE_FAILED",
+        "record_id": null,
+        "attempts": 0,
+        "attempt_id": 0
+      }
+    },
+    "NETCONFIRM": {
+      "http": 503,
+      "response": {
+        "ticket_id": "REGRESSION-NETCONFIRM",
+        "attempt_id": 0,
+        "status": "WRITE_UNRESOLVED",
+        "route": "AUTO",
+        "reason": "STATE_CONFIRMATION_FAILED"
+      },
+      "state": {
+        "ticket_id": "REGRESSION-NETCONFIRM",
+        "status": "AI_CLASSIFIED",
+        "ai_called": 1,
+        "category": "order_status",
+        "confidence": 0.95,
+        "route": "AUTO",
+        "reason": "AUTO_ALLOWED",
+        "record_id": null,
+        "attempts": 0,
+        "attempt_id": 0
+      }
+    },
+    "NETLLM": {
+      "http": 200,
+      "response": {
+        "ticket_id": "REGRESSION-NETLLM",
+        "attempt_id": 0,
+        "status": "HUMAN_REVIEW",
+        "route": "REVIEW",
+        "reason": "AI_SERVICE_ERROR",
+        "category": null,
+        "confidence": null,
+        "record_id": "REVIEW-REGRESSION-NETLLM"
+      }
+    },
+    "TIMEOUT": {
+      "http": 200,
+      "response": {
+        "ticket_id": "LIVE-TIMEOUT",
+        "attempt_id": 0,
+        "status": "HUMAN_REVIEW",
+        "route": "REVIEW",
+        "reason": "AI_TIMEOUT",
+        "category": null,
+        "confidence": null,
+        "record_id": "REVIEW-LIVE-TIMEOUT"
+      }
+    }
+  }
+}
